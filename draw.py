@@ -3,18 +3,35 @@ from matrix import *
 
 
 def add_circle( points, cx, cy, cz, r, step ):
-    oldx = cx
-    oldy =
-    for i in range(step):
-        theta = (i / step) * 2.0 * math.pi
+    newx = cx + r
+    newy = cy
+    for i in range(step + 1):
+        theta = (i / float(step)) * 2.0 * math.pi
+        oldx = newx
+        oldy = newy
         newx = cx + (r * math.cos(theta))
         newy = cy + (r * math.sin(theta))
-        add_edge
+        add_edge(points, newx, newy, cz, oldx, oldy, cz)
+
+
+
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
+    if curve_type == 'bezier':
+        coef = make_bezier(x0, y0, x1, y1, x2, y2, x3, y3)
+    elif curve_type == 'hermite':
+        coef = make_hermite(x0, y0, x1, y1, x2, y2, x3, y3)
 
+    newx = x0
+    newy = y0
+    for i in range(step + 1):
+        t = i / float(step)
+        oldx = newx
+        oldy = newy
+        newx = coef[0][0] * (t ** 3) + coef[0][1] * (t ** 2) + coef[0][2] * t + coef[0][3]
+        newy = coef[1][0] * (t ** 3) + coef[1][1] * (t ** 2) + coef[1][2] * t + coef[1][3]
+        add_edge(points, newx, newy, 0, oldx, oldy, 0)
 
-    pass
 
 
 def draw_lines( matrix, screen, color ):

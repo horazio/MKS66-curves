@@ -18,5 +18,22 @@ transform = new_matrix()
 # print_matrix( make_rotY(math.pi/4) )
 # print
 # print_matrix( make_rotZ(math.pi/4) )
+'''
+for i in range(100):
+
+    count = (i + 1) * 10
+
+    points = [0, -1 * count, count, -1 * count, count, count, 0, count]
+
+    s = "bezier\n" + str(points[0]) + " " + str(points[1]) + " " +str(points[2]) + " " +str(points[3]) + " " +str(points[4]) + " " +str(points[5]) + " " +str(points[6]) + " " +str(points[7])
+    print(s)
+
+    points = [0, -1 * count + 10, -1 * count, -1 * count + 10, -1 * count, count + 10, 0, count + 10]
+
+    s = "bezier\n" + str(points[0]) + " " + str(points[1]) + " " +str(points[2]) + " " +str(points[3]) + " " +str(points[4]) + " " +str(points[5]) + " " +str(points[6]) + " " +str(points[7])
+    print(s)
+
+
+'''
 
 parse_file( 'script', edges, transform, screen, color )
