@@ -50,6 +50,7 @@ def parse_file( fname, edges, transform, screen, color ):
     lines = f.readlines()
 
     c = 0
+    steps = 100
     while c < len(lines):
         line = lines[c].strip()
         #print ':' + line + ':'
@@ -88,13 +89,13 @@ def parse_file( fname, edges, transform, screen, color ):
             matrix_mult(t, transform)
 
         elif line == 'circle':
-            add_circle(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), 30)
+            add_circle(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), 100)
 
         elif line == 'hermite':
-            add_curve(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]), float(args[6]), float(args[7]), 30, 'hermite')
+            add_curve(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]), float(args[6]), float(args[7]), 100, 'hermite')
 
         elif line == 'bezier':
-            add_curve(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]), float(args[6]), float(args[7]), 30, 'bezier')
+            add_curve(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]), float(args[6]), float(args[7]), 100, 'bezier')
 
         elif line == 'ident':
             ident(transform)
